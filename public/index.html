@@ -25,9 +25,36 @@
 
         <section id="draft">
             <h2>Fantasy Draft</h2>
-            <p>Browse available NFL players for your fantasy team.</p>
+            <p>Select one QB, RB, WR, and TE to build your fantasy lineup.</p>
 
+            <div class="draft-summary">
+                <div class="summary-box">
+                    <h3>Starting Budget</h3>
+                    <p>1,000 Tokens</p>
+                </div>
+
+                <div class="summary-box">
+                    <h3>Remaining Budget</h3>
+                    <p id="remaining-budget">1,000 Tokens</p>
+                </div>
+
+                <div class="summary-box">
+                    <h3>Players Selected</h3>
+                    <p id="player-count">0 / 4</p>
+                </div>
+            </div>
+
+            <h3>Available NFL Players</h3>
             <div id="player-list" class="player-grid"></div>
+
+            <div class="lineup-section">
+                <h3>Your Fantasy Lineup</h3>
+                <p>Your selected players will appear here.</p>
+
+                <div id="lineup-list" class="lineup-grid"></div>
+
+                <p id="draft-message" class="draft-message" role="status"></p>
+            </div>
         </section>
 
         <section id="predictions">

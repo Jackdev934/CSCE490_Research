@@ -1,4 +1,9 @@
-// Sample NFL players for the fantasy draft
+
+const startingBudget = 1000;
+let remainingBudget = startingBudget;
+let draftedPlayers = [];
+
+// Sample NFL players
 const players = [
     { name: "Patrick Mahomes", team: "Chiefs", position: "QB", cost: 300, rating: 95 },
     { name: "Josh Allen", team: "Bills", position: "QB", cost: 290, rating: 94 },
@@ -21,7 +26,7 @@ const players = [
     { name: "Trey McBride", team: "Cardinals", position: "TE", cost: 160, rating: 87 }
 ];
 
-// Sample NFL matchups for predictions
+// Sample NFL games
 const games = [
     { home: "Chiefs", away: "Bills" },
     { home: "Eagles", away: "Cowboys" },
@@ -30,24 +35,135 @@ const games = [
 
 function displayPlayers() {
     const playerList = document.getElementById("player-list");
+    playerList.innerHTML = "";
 
     players.forEach(player => {
         const card = document.createElement("div");
         card.className = "player-card";
+
+        const alreadyDrafted = draftedPlayers.some(
+            selected => selected.name === player.name
+        );
+
+        const positionTaken = draftedPlayers.some(
+            selected => selected.position === player.position
+        );
+
+        const cannotAfford = player.cost > remainingBudget;
 
         card.innerHTML = `
             <h3>${player.name}</h3>
             <p>${player.team} | ${player.position}</p>
             <p>Cost: ${player.cost} tokens</p>
             <p>Rating: ${player.rating}</p>
+            <button
+                ${alreadyDrafted || positionTaken || cannotAfford ? "disabled" : ""}
+            >
+                ${alreadyDrafted ? "Selected" : "Draft Player"}
+            </button>
         `;
+
+        const button = card.querySelector("button");
+
+        button.addEventListener("click", () => {
+            draftPlayer(player.name);
+        });
 
         playerList.appendChild(card);
     });
 }
 
+function draftPlayer(playerName) {
+    const player = players.find(p => p.name === playerName);
+
+    if (!player) {
+        return;
+    }
+
+    if (draftedPlayers.some(p => p.name === player.name)) {
+        return;
+    }
+
+    if (draftedPlayers.some(p => p.position === player.position)) {
+        showMessage("You already have a player in that position.");
+        return;
+    }
+
+    if (player.cost > remainingBudget) {
+        showMessage("You do not have enough tokens for that player.");
+        return;
+    }
+
+    draftedPlayers.push(player);
+    remainingBudget -= player.cost;
+
+    updateDraft();
+    showMessage(`${player.name} added to your lineup!`);
+}
+
+function removePlayer(playerName) {
+    const player = draftedPlayers.find(p => p.name === playerName);
+
+    if (!player) {
+        return;
+    }
+
+    draftedPlayers = draftedPlayers.filter(
+        p => p.name !== playerName
+    );
+
+    remainingBudget += player.cost;
+
+    updateDraft();
+    showMessage(`${player.name} removed from your lineup.`);
+}
+
+function displayLineup() {
+    const lineupList = document.getElementById("lineup-list");
+    lineupList.innerHTML = "";
+
+    if (draftedPlayers.length === 0) {
+        lineupList.innerHTML = "<p>No players drafted yet.</p>";
+        return;
+    }
+
+    draftedPlayers.forEach(player => {
+        const card = document.createElement("div");
+        card.className = "lineup-card";
+
+        card.innerHTML = `
+            <h3>${player.position}: ${player.name}</h3>
+            <p>${player.team}</p>
+            <p>Cost: ${player.cost} tokens</p>
+            <button class="remove-button">Remove Player</button>
+        `;
+
+        card.querySelector("button").addEventListener("click", () => {
+            removePlayer(player.name);
+        });
+
+        lineupList.appendChild(card);
+    });
+}
+
+function updateDraft() {
+    document.getElementById("remaining-budget").textContent =
+        `${remainingBudget} Tokens`;
+
+    document.getElementById("player-count").textContent =
+        `${draftedPlayers.length} / 4`;
+
+    displayPlayers();
+    displayLineup();
+}
+
+function showMessage(message) {
+    document.getElementById("draft-message").textContent = message;
+}
+
 function displayGames() {
     const gameList = document.getElementById("game-list");
+    gameList.innerHTML = "";
 
     games.forEach(game => {
         const card = document.createElement("div");
@@ -62,5 +178,6 @@ function displayGames() {
     });
 }
 
-displayPlayers();
+// Initialize page
+updateDraft();
 displayGames();

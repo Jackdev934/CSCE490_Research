@@ -43,8 +43,17 @@ section {
     border-radius: 10px;
 }
 
+h2 {
+    color: #f1f5f9;
+}
+
+h3 {
+    color: #67d8f7;
+}
+
 .player-grid,
-.game-grid {
+.game-grid,
+.lineup-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 15px;
@@ -52,7 +61,8 @@ section {
 }
 
 .player-card,
-.game-card {
+.game-card,
+.lineup-card {
     background-color: #111b2b;
     border: 1px solid #355071;
     border-radius: 10px;
@@ -60,14 +70,84 @@ section {
 }
 
 .player-card h3,
-.game-card h3 {
-    color: #67d8f7;
+.game-card h3,
+.lineup-card h3 {
     margin-top: 0;
 }
 
 .player-card p,
-.game-card p {
+.game-card p,
+.lineup-card p {
     color: #cbd5e1;
+}
+
+.draft-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.summary-box {
+    background-color: #111b2b;
+    border: 1px solid #355071;
+    border-radius: 10px;
+    padding: 18px;
+    text-align: center;
+}
+
+.summary-box h3 {
+    font-size: 15px;
+    margin-top: 0;
+}
+
+.summary-box p {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+button {
+    background-color: #2979ff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #1565c0;
+}
+
+button:disabled {
+    background-color: #475569;
+    cursor: not-allowed;
+}
+
+.lineup-section {
+    margin-top: 35px;
+    padding-top: 20px;
+    border-top: 1px solid #476080;
+}
+
+.lineup-card {
+    border-left: 4px solid #67d8f7;
+}
+
+.remove-button {
+    background-color: #b91c1c;
+}
+
+.remove-button:hover {
+    background-color: #991b1b;
+}
+
+.draft-message {
+    color: #4ade80;
+    font-weight: bold;
+    margin-top: 20px;
 }
 
 @media (max-width: 600px) {
