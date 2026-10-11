@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +10,7 @@
 <body>
     <header>
         <h1>Sports490</h1>
+
         <nav>
             <a href="#draft">Fantasy Draft</a>
             <a href="#predictions">Predictions</a>
@@ -23,12 +25,16 @@
 
         <section id="draft">
             <h2>Fantasy Draft</h2>
-            <p>Draft your football team and compete against opponents.</p>
+            <p>Browse available NFL players for your fantasy team.</p>
+
+            <div id="player-list" class="player-grid"></div>
         </section>
 
         <section id="predictions">
-            <h2>Predictions</h2>
-            <p>Choose which football teams you think will win.</p>
+            <h2>Game Predictions</h2>
+            <p>View upcoming sample NFL matchups.</p>
+
+            <div id="game-list" class="game-grid"></div>
         </section>
 
         <section id="community">
@@ -41,5 +47,7 @@
             <p>View your profile and activity.</p>
         </section>
     </main>
+
+    <script src="app.js"></script>
 </body>
 </html>
