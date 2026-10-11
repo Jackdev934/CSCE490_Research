@@ -10,7 +10,6 @@
 <body>
     <header>
         <h1>Sports490</h1>
-
         <nav>
             <a href="#draft">Fantasy Draft</a>
             <a href="#predictions">Predictions</a>
@@ -24,43 +23,62 @@
         <p>Your football fantasy and prediction platform.</p>
 
         <section id="draft">
-            <h2>Fantasy Draft</h2>
-            <p>Select one QB, RB, WR, and TE to build your fantasy lineup.</p>
+            <h2>NFL Fantasy Snake Draft</h2>
+            <p>Draft one QB, RB, WR, and TE against the CPU.</p>
 
             <div class="draft-summary">
                 <div class="summary-box">
-                    <h3>Starting Budget</h3>
-                    <p>1,000 Tokens</p>
+                    <h3>Your Budget</h3>
+                    <p id="remaining-budget">1000 Tokens</p>
                 </div>
-
                 <div class="summary-box">
-                    <h3>Remaining Budget</h3>
-                    <p id="remaining-budget">1,000 Tokens</p>
+                    <h3>CPU Budget</h3>
+                    <p id="cpu-budget">1000 Tokens</p>
                 </div>
-
                 <div class="summary-box">
-                    <h3>Players Selected</h3>
-                    <p id="player-count">0 / 4</p>
+                    <h3>Current Pick</h3>
+                    <p id="current-pick">1 / 8</p>
                 </div>
+            </div>
+
+            <div class="draft-status">
+                <h3 id="turn-message">Your turn to draft!</h3>
+                <p id="draft-message" role="status">
+                    Select your first player below.
+                </p>
+                <button id="reset-draft">Reset Draft</button>
             </div>
 
             <h3>Available NFL Players</h3>
             <div id="player-list" class="player-grid"></div>
 
             <div class="lineup-section">
-                <h3>Your Fantasy Lineup</h3>
-                <p>Your selected players will appear here.</p>
+                <h2>Fantasy Lineups</h2>
+                <div class="lineup-columns">
+                    <div class="team-panel">
+                        <h3>Your Lineup</h3>
+                        <div id="lineup-list"></div>
+                    </div>
+                    <div class="team-panel">
+                        <h3>CPU Lineup</h3>
+                        <div id="cpu-lineup"></div>
+                    </div>
+                </div>
+            </div>
 
-                <div id="lineup-list" class="lineup-grid"></div>
-
-                <p id="draft-message" class="draft-message" role="status"></p>
+            <div class="matchup-section">
+                <h2>Fantasy Matchup</h2>
+                <p>Finish the draft to play against the CPU.</p>
+                <button id="play-matchup" disabled>
+                    Play Matchup
+                </button>
+                <div id="matchup-result" role="status"></div>
             </div>
         </section>
 
         <section id="predictions">
             <h2>Game Predictions</h2>
-            <p>View upcoming sample NFL matchups.</p>
-
+            <p>View sample NFL matchups.</p>
             <div id="game-list" class="game-grid"></div>
         </section>
 
