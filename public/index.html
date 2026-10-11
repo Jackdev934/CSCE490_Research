@@ -157,7 +157,6 @@
             </div>
 
             <p>Select the team you think will win each matchup.</p>
-
             <div id="game-list" class="game-grid"></div>
         </section>
 
@@ -167,17 +166,42 @@
                     <span class="section-label">SOCIAL</span>
                     <h2>Community Feed</h2>
                 </div>
+                <span class="section-tag">FOOTBALL COMMUNITY</span>
             </div>
 
             <p>
-                Share your football opinions, predictions, and reactions
-                with the community.
+                Share your football opinions, predictions, and reactions.
             </p>
 
-            <div class="coming-soon">
-                <h3>Join the Conversation</h3>
-                <p>Community posts, likes, and reposts are coming soon.</p>
+            <div class="post-composer">
+                <h3>Create a Post</h3>
+
+                <form id="post-form">
+                    <label for="post-text">What's on your mind?</label>
+
+                    <textarea
+                        id="post-text"
+                        maxlength="280"
+                        rows="4"
+                        placeholder="Share your thoughts about football..."
+                        required
+                    ></textarea>
+
+                    <div class="post-form-footer">
+                        <span id="character-count">0 / 280</span>
+                        <button type="submit">Post</button>
+                    </div>
+                </form>
+
+                <p id="post-message" role="status"></p>
             </div>
+
+            <div class="feed-heading">
+                <h3>Recent Posts</h3>
+                <span id="post-total">0 Posts</span>
+            </div>
+
+            <div id="community-feed"></div>
         </section>
 
         <section id="account">
