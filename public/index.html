@@ -65,12 +65,22 @@
             <div class="section-heading">
                 <div>
                     <span class="section-label">FANTASY FOOTBALL</span>
-                    <h2>NFL Snake Draft</h2>
+                    <h2>Football Snake Draft</h2>
                 </div>
                 <span class="section-tag">VS CPU</span>
             </div>
 
             <p>Draft one QB, RB, WR, and TE against a computer opponent.</p>
+
+            <div class="league-selector">
+                <label for="league-select">Choose Football League</label>
+                <select id="league-select">
+                    <option value="NFL">NFL</option>
+                    <option value="UFL">UFL</option>
+                    <option value="CFL">CFL</option>
+                    <option value="COLLEGE">College Football</option>
+                </select>
+            </div>
 
             <div class="draft-summary">
                 <div class="summary-box">
@@ -102,8 +112,8 @@
             </div>
 
             <div class="subsection-heading">
-                <h3>Available NFL Players</h3>
-                <span>16 Players</span>
+                <h3>Available Players</h3>
+                <span id="player-total">16 Players</span>
             </div>
 
             <div id="player-list" class="player-grid"></div>
@@ -143,10 +153,10 @@
                     <span class="section-label">GAME CENTER</span>
                     <h2>Game Predictions</h2>
                 </div>
-                <span class="section-tag">NFL</span>
+                <span class="section-tag" id="prediction-league">NFL</span>
             </div>
 
-            <p>Browse sample NFL matchups. Interactive predictions are coming soon.</p>
+            <p>Select the team you think will win each matchup.</p>
 
             <div id="game-list" class="game-grid"></div>
         </section>
@@ -178,9 +188,7 @@
                 </div>
             </div>
 
-            <p>
-                Manage your display name, favorite NFL team, and account details.
-            </p>
+            <p>Manage your profile, favorite team, and account details.</p>
 
             <a href="account.html" class="primary-button">
                 View My Account

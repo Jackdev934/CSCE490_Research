@@ -1,6 +1,4 @@
 
-/* General Website Styling */
-
 * {
     box-sizing: border-box;
 }
@@ -29,7 +27,7 @@ p {
     color: #cbd5e1;
 }
 
-/* Header and Navigation */
+/* Header */
 
 .site-header {
     background-color: #111b2b;
@@ -92,7 +90,7 @@ p {
     color: white;
 }
 
-/* Main Layout */
+/* Layout */
 
 main {
     max-width: 1200px;
@@ -122,7 +120,8 @@ section {
     font-size: 27px;
 }
 
-.section-label {
+.section-label,
+.hero-label {
     color: #67d8f7;
     font-size: 12px;
     font-weight: bold;
@@ -156,7 +155,7 @@ section {
     font-size: 13px;
 }
 
-/* Homepage Hero */
+/* Hero */
 
 .hero {
     background: linear-gradient(120deg, #142743, #0d1728 70%);
@@ -228,7 +227,7 @@ button:disabled {
     cursor: not-allowed;
 }
 
-/* Homepage Feature Cards */
+/* Feature Cards */
 
 .feature-grid {
     display: grid;
@@ -265,7 +264,36 @@ button:disabled {
     font-size: 30px;
 }
 
-/* Draft Summary */
+/* League Selector */
+
+.league-selector {
+    background-color: #111b2b;
+    border: 1px solid #355071;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.league-selector label {
+    color: #67d8f7;
+    font-weight: bold;
+}
+
+.league-selector select {
+    background-color: #243955;
+    color: white;
+    border: 1px solid #476080;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 15px;
+    min-width: 180px;
+}
+
+/* Draft */
 
 .draft-summary {
     display: grid;
@@ -297,8 +325,6 @@ button:disabled {
     overflow-wrap: anywhere;
 }
 
-/* Draft Status */
-
 .draft-status {
     background-color: #111b2b;
     border: 1px solid #355071;
@@ -321,7 +347,7 @@ button:disabled {
     margin: 0;
 }
 
-/* Player and Game Cards */
+/* Player Cards */
 
 .player-grid,
 .game-grid {
@@ -356,7 +382,7 @@ button:disabled {
     margin-top: 10px;
 }
 
-/* Fantasy Lineups */
+/* Lineups */
 
 .lineup-section {
     margin-top: 40px;
@@ -409,7 +435,7 @@ button:disabled {
     margin-bottom: 12px;
 }
 
-/* Matchup Results */
+/* Matchup */
 
 .matchup-section {
     background-color: #111b2b;
@@ -440,7 +466,38 @@ button:disabled {
     color: #67d8f7;
 }
 
-/* Community Placeholder */
+/* Prediction Cards */
+
+.prediction-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.prediction-button {
+    width: 100%;
+    text-align: center;
+    border: 2px solid transparent;
+}
+
+.prediction-button:hover {
+    filter: brightness(1.15);
+}
+
+.prediction-button.selected {
+    border-color: #ffffff;
+    box-shadow: 0 0 0 2px #2979ff;
+}
+
+.prediction-confirmation {
+    color: #4ade80;
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+/* Community */
 
 .coming-soon {
     background-color: #111b2b;
@@ -455,7 +512,7 @@ button:disabled {
     color: #67d8f7;
 }
 
-/* Account Page */
+/* Account */
 
 .page-intro {
     padding: 30px 0 10px;
@@ -544,7 +601,7 @@ footer p {
     margin: 5px;
 }
 
-/* Responsive Layout */
+/* Mobile */
 
 @media (max-width: 850px) {
     .header-inner {
@@ -578,10 +635,7 @@ footer p {
         font-size: 13px;
     }
 
-    .draft-summary {
-        grid-template-columns: 1fr;
-    }
-
+    .draft-summary,
     .lineup-columns {
         grid-template-columns: 1fr;
     }
@@ -601,5 +655,10 @@ footer p {
 
     .page-intro h1 {
         font-size: 30px;
+    }
+
+    .league-selector {
+        align-items: stretch;
+        flex-direction: column;
     }
 }
