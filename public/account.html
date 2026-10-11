@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account - Sports490</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Sports490</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="index.html#draft">Fantasy Draft</a>
+            <a href="index.html#predictions">Predictions</a>
+            <a href="index.html#community">Community</a>
+            <a href="account.html">My Account</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>My Account</h2>
+        <p>Manage your Sports490 profile.</p>
+
+        <section class="profile-section">
+            <h2>Profile Information</h2>
+
+            <div class="profile-header">
+                <div class="profile-avatar" id="profile-avatar">
+                    P
+                </div>
+
+                <div>
+                    <h3 id="profile-name">Player</h3>
+                    <p>Sports490 Member</p>
+                </div>
+            </div>
+
+            <form id="profile-form">
+                <div class="form-group">
+                    <label for="display-name">Display Name</label>
+                    <input
+                        type="text"
+                        id="display-name"
+                        maxlength="30"
+                        placeholder="Enter your display name"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="favorite-team">Favorite NFL Team</label>
+                    <select id="favorite-team">
+                        <option value="">Select a team</option>
+                        <option value="49ers">49ers</option>
+                        <option value="Bears">Bears</option>
+                        <option value="Bengals">Bengals</option>
+                        <option value="Bills">Bills</option>
+                        <option value="Broncos">Broncos</option>
+                        <option value="Browns">Browns</option>
+                        <option value="Buccaneers">Buccaneers</option>
+                        <option value="Cardinals">Cardinals</option>
+                        <option value="Chargers">Chargers</option>
+                        <option value="Chiefs">Chiefs</option>
+                        <option value="Colts">Colts</option>
+                        <option value="Commanders">Commanders</option>
+                        <option value="Cowboys">Cowboys</option>
+                        <option value="Dolphins">Dolphins</option>
+                        <option value="Eagles">Eagles</option>
+                        <option value="Falcons">Falcons</option>
+                        <option value="Giants">Giants</option>
+                        <option value="Jaguars">Jaguars</option>
+                        <option value="Jets">Jets</option>
+                        <option value="Lions">Lions</option>
+                        <option value="Packers">Packers</option>
+                        <option value="Panthers">Panthers</option>
+                        <option value="Patriots">Patriots</option>
+                        <option value="Raiders">Raiders</option>
+                        <option value="Rams">Rams</option>
+                        <option value="Ravens">Ravens</option>
+                        <option value="Saints">Saints</option>
+                        <option value="Seahawks">Seahawks</option>
+                        <option value="Steelers">Steelers</option>
+                        <option value="Texans">Texans</option>
+                        <option value="Titans">Titans</option>
+                        <option value="Vikings">Vikings</option>
+                    </select>
+                </div>
+
+                <button type="submit">Save Profile</button>
+                <p id="save-message" role="status"></p>
+            </form>
+        </section>
+
+        <section>
+            <h2>Account Overview</h2>
+
+            <div class="draft-summary">
+                <div class="summary-box">
+                    <h3>Account Balance</h3>
+                    <p id="account-balance">1,000 Tokens</p>
+                </div>
+
+                <div class="summary-box">
+                    <h3>Favorite Team</h3>
+                    <p id="favorite-team-display">Not Selected</p>
+                </div>
+
+                <div class="summary-box">
+                    <h3>Account Type</h3>
+                    <p>Free Member</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>My Activity</h2>
+            <p>Draft history and prediction history will appear here in a later stage.</p>
+        </section>
+    </main>
+
+    <script src="account.js"></script>
+</body>
+</html>
