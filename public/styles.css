@@ -782,3 +782,53 @@ footer p {
         flex-direction: column;
     }
 }
+
+.activity-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.history-card {
+    background-color: #111b2b;
+    border: 1px solid #355071;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 15px;
+}
+
+.history-card h3 {
+    color: #67d8f7;
+    margin-top: 0;
+}
+
+.history-card p {
+    color: #cbd5e1;
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+.activity-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.active-tab {
+    background-color: #2979ff;
+    border: 1px solid #67d8f7;
+}
+
+@media (max-width: 850px) {
+    .activity-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 500px) {
+    .activity-stats {
+        grid-template-columns: 1fr;
+    }
+}

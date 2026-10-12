@@ -28,7 +28,7 @@
         <div class="page-intro">
             <span class="section-label">PLAYER PROFILE</span>
             <h1>My Account</h1>
-            <p>Customize your profile and manage your Sports490 account.</p>
+            <p>Manage your profile and view your Sports490 activity.</p>
         </div>
 
         <section class="profile-section">
@@ -133,18 +133,76 @@
         <section>
             <div class="section-heading">
                 <div>
-                    <span class="section-label">YOUR ACTIVITY</span>
-                    <h2>My Activity</h2>
+                    <span class="section-label">YOUR STATISTICS</span>
+                    <h2>Activity Overview</h2>
                 </div>
             </div>
 
-            <div class="coming-soon">
-                <h3>Your Sports490 History</h3>
-                <p>
-                    Your posts, draft history, and prediction history
-                    will appear here in a later stage.
-                </p>
+            <div class="activity-stats">
+                <div class="summary-box">
+                    <h3>Matchups Played</h3>
+                    <p id="stat-matchups">0</p>
+                </div>
+
+                <div class="summary-box">
+                    <h3>Matchups Won</h3>
+                    <p id="stat-wins">0</p>
+                </div>
+
+                <div class="summary-box">
+                    <h3>Predictions Made</h3>
+                    <p id="stat-predictions">0</p>
+                </div>
+
+                <div class="summary-box">
+                    <h3>Community Posts</h3>
+                    <p id="stat-posts">0</p>
+                </div>
             </div>
+        </section>
+
+        <section>
+            <div class="section-heading">
+                <div>
+                    <span class="section-label">FANTASY FOOTBALL</span>
+                    <h2>Draft History</h2>
+                </div>
+            </div>
+
+            <p>Your completed fantasy matchups.</p>
+            <div id="draft-history"></div>
+        </section>
+
+        <section>
+            <div class="section-heading">
+                <div>
+                    <span class="section-label">GAME CENTER</span>
+                    <h2>Prediction History</h2>
+                </div>
+            </div>
+
+            <p>Teams you've predicted to win.</p>
+            <div id="prediction-history"></div>
+        </section>
+
+        <section>
+            <div class="section-heading">
+                <div>
+                    <span class="section-label">COMMUNITY</span>
+                    <h2>My Community Activity</h2>
+                </div>
+            </div>
+
+            <div class="activity-tabs">
+                <button id="show-my-posts" class="active-tab">
+                    My Posts
+                </button>
+                <button id="show-my-reposts" class="secondary-action">
+                    Reposted Posts
+                </button>
+            </div>
+
+            <div id="community-history"></div>
         </section>
     </main>
 
@@ -154,5 +212,6 @@
     </footer>
 
     <script src="account.js"></script>
+    <script src="history.js"></script>
 </body>
 </html>

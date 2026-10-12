@@ -175,4 +175,145 @@ document.getElementById("post-text").addEventListener("input", function() {
         `${this.value.length} / 280`;
 });
 
-displayPosts();
+
+function playMatchup() {
+    if (currentPick < draftOrder.length || matchupPlayed) return;
+
+    matchupPlayed = true;
+
+    const userScore = calculateScore(userLineup);
+    const cpuScore = calculateScore(cpuLineup);
+
+    let resultText = "";
+
+    if (userScore > cpuScore) {
+        resultText = "Win";
+    } else if (cpuScore > userScore) {
+        resultText = "Loss";
+    } else {
+        resultText = "Tie";
+    }
+
+    const result = document.getElementById("matchup-result");
+    result.innerHTML = "";
+
+    const scores = document.createElement("p");
+    scores.textContent =
+        `Your Team: ${userScore} points | CPU: ${cpuScore} points`;
+
+    const winner = document.createElement("p");
+
+    if (resultText === "Win") {
+        winner.textContent = "You won the matchup!";
+        winner.className = "result-win";
+    } else if (resultText === "Loss") {
+        winner.textContent = "The CPU won the matchup!";
+        winner.className = "result-loss";
+    } else {
+        winner.textContent = "The matchup ended in a tie!";
+        winner.className = "result-tie";
+    }
+
+    result.appendChild(scores);
+    result.appendChild(winner);
+
+    // Save completed matchup to browser storage
+    const historyKey = "sports490-draft-history";
+
+    let draftHistory = [];
+
+    try {
+        draftHistory = JSON.parse(
+            localStorage.getItem(historyKey)
+        ) || [];
+    } catch (error) {
+        draftHistory = [];
+    }
+
+    if (!Array.isArray(draftHistory)) {
+        draftHistory = [];
+    }
+
+    draftHistory.push({
+        id: Date.now(),
+        league: currentLeague,
+        date: new Date().toISOString(),
+        userScore: userScore,
+        cpuScore: cpuScore,
+        result: resultText,
+        userLineup: [...userLineup],
+        cpuLineup: [...cpuLineup]
+    });
+
+    localStorage.setItem(
+        historyKey,
+        JSON.stringify(draftHistory)
+    );
+
+    updateDraft();
+}
+
+
+function makePrediction(gameIndex, team) {
+    const key = `${currentLeague}-${gameIndex}`;
+    const game = leagueGames[currentLeague][gameIndex];
+
+    predictions[key] = team;
+
+    const historyKey = "sports490-predictions";
+
+    let savedPredictions = {};
+
+    try {
+        savedPredictions = JSON.parse(
+            localStorage.getItem(historyKey)
+        ) || {};
+    } catch (error) {
+        savedPredictions = {};
+    }
+
+    if (
+        !savedPredictions ||
+        typeof savedPredictions !== "object" ||
+        Array.isArray(savedPredictions)
+    ) {
+        savedPredictions = {};
+    }
+
+    savedPredictions[key] = {
+        league: currentLeague,
+        home: game.home,
+        away: game.away,
+        team: team,
+        date: new Date().toISOString()
+    };
+
+    localStorage.setItem(
+        historyKey,
+        JSON.stringify(savedPredictions)
+    );
+
+    displayGames();
+}
+
+
+function loadSavedPredictions() {
+    try {
+        const saved = JSON.parse(
+            localStorage.getItem("sports490-predictions")
+        );
+
+        if (!saved || typeof saved !== "object") return;
+
+        Object.entries(saved).forEach(([key, value]) => {
+            if (value && typeof value.team === "string") {
+                predictions[key] = value.team;
+            }
+        });
+    } catch (error) {
+        console.log("No saved predictions found.");
+    }
+}
+
+loadSavedPredictions();
+displayGames();
